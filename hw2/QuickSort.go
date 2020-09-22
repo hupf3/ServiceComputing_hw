@@ -2,7 +2,7 @@ package Qsort
 
 // 快速排序递归实现
 func QuickSort(arr []int, l, r int) {
-	pivot := arr[l] // 选取中间值
+	pivot := arr[l] // 选取 中间值
 	pos := l        // 中间值的位置
 	i, j := l, r
 

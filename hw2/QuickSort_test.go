@@ -21,7 +21,7 @@ func TestQuickSort(t *testing.T) {
 		for i := 0; i < MAXN; i++ {
 			t.Errorf("%d\t", expected[i])
 		}
-		t.Errorf("but got ")
+		t.Errorf("but got")
 		for i := 0; i < MAXN; i++ {
 			t.Errorf("%d\t", arr[i])
 		}
