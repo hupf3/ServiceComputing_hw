@@ -17,7 +17,7 @@ func TestQuickSort(t *testing.T) {
 		}
 	}
 	if flag == false {
-		t.Errorf("expected")
+		t.Errorf("expected ")
 		for i := 0; i < MAXN; i++ {
 			t.Errorf("%d\t", expected[i])
 		}
