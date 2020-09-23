@@ -28,3 +28,10 @@ func TestQuickSort(t *testing.T) {
 	}
 
 }
+
+func BenchmarkQuickSort(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		var arrt = []int{7, 4, 8, 5, 3, 6, 9, 1, 10, 2}
+		QuickSort(arrt, 0, MAXN-1)
+	}
+}
