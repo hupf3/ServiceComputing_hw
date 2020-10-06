@@ -380,7 +380,7 @@ func main() {
 
 -  `go run selpg.go -s1 -e2 -l1 -f test.txt`
 
-<img src="/Users/hupf/Library/Application%20Support/typora-user-images/image-20201006230759362.png" alt="image-20201006230759362" style="zoom:33%;" />
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20201006231710146.png#pic_center)
 
 通过上述的测试可以看到错误提示信息也成功实现。
 
