@@ -1,10 +1,4 @@
-[toc]
-
 # Golang 开发 selpg
-
-## 实验代码
-
-[github仓库]()
 
 ## 实验要求
 
