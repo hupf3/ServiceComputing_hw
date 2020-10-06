@@ -14,7 +14,7 @@
 
 ## CLI 介绍
 
-**CLI（Command Line Interface）**实用程序是Linux下应用开发的基础。正确的编写命令行程序让应用与操作系统融为一体，通过shell或script使得应用获得最大的灵活性与开发效率。例如：
+**CLI（Command Line Interface）** 实用程序是Linux下应用开发的基础。正确的编写命令行程序让应用与操作系统融为一体，通过shell或script使得应用获得最大的灵活性与开发效率。例如：
 
 - Linux提供了cat、ls、copy等命令与操作系统交互；
 - go语言提供一组实用程序完成从编码、编译、库管理、产品发布全过程支持；
