@@ -339,6 +339,38 @@ func isChanged(infile string) (*config, error) {
   <img src="https://img-blog.csdnimg.cn/20201018221451535.png#pic_center" alt="在这里插入图片描述" style="zoom:50%;" />
 
   由上图可知第二个提示信息即为刚刚进行的修改，所以该功能进行成功测试
+  
+- 对于不同的错误会有不同的提示信息，比如打开文件错误，或者文件不存在，或者读取文件有误，这体现了错误的自定义，具体的代码如下：
+
+  ```go
+  	// 文件打开失败
+  	if err != nil {
+  		err = errors.New("Open file failed!")
+  		fmt.Println("Error:", err)
+  		return err
+  	}
+  
+  		if err != nil {
+  			if err != io.EOF {
+  				err = errors.New("Can not read the file!")
+  				fmt.Println("Error:", err)
+  				return err
+  			}
+  
+  			// 文件读取完毕
+  			if len(str) == 0 {
+  				break
+  			}
+  		}
+  ```
+
+  上面就是两个不同的错误的提示信息。
+
+  我们来验证一下，文件不存在的错误信息，也就是打开文件出现错误，实现的方法也比较简单，直接将文件的名字改成一个不存在的名字即可，然后运行程序，看运行的结果
+
+  <img src="https://img-blog.csdnimg.cn/20201019000258948.png#pic_center" alt="在这里插入图片描述" style="zoom:50%;" />
+
+  可以看出自定义的错误成功实现
 
 ## API文档
 
