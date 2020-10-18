@@ -1,0 +1,5 @@
+package readini
+
+func Testwatch() {
+
+}
