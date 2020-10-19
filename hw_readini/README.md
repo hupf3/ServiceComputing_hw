@@ -2,7 +2,7 @@
 
 ## 概述
 
-本仓库包括了程序包说明文档 `README.md` ，实现程序包的过程的文档 `specification.md` ，程序包文件夹 `readini` 里面包含了实现读取和监听功能的函数；`main.go` 文件可以更方便进行读取文件，我已经将程序包中的所有函数放到了 `main.go` 中，只需要在文件中的 main 函数进行调用即可。`test.ini` 是用来测试的 ini 配置文件
+本仓库包括了程序包说明文档 `README.md` ，实现程序包的过程的文档 `specification.md` ，程序包文件夹 `readini` 里面包含了实现读取和监听功能的函数；`main.go` 文件可以更方便进行读取文件，我已经将程序包中的所有函数放到了 `main.go` 中，只需要在文件中的 main 函数进行调用即可。`test.ini` 是用来测试的 ini 配置文件,`page.html` 是生成的 API 文档
 
 ## 获取包
 

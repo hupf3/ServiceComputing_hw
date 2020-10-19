@@ -398,6 +398,12 @@ func isChanged(infile string) (*config, error) {
 
 <img src="https://img-blog.csdnimg.cn/20201019084034765.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMjY3Nzcz,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述" style="zoom:50%;" />
 
+- 生成线下版 API 文档的方法：
+
+  在包的文件夹中使用命令 `godoc`，然后输入命令 `go doc -url=包的路径 > 生成的文件名` ，执行完命令后即可自动生成一个 `html` 文件。
+
+  本此实验生成的 API 文档为 `page.html`，在目录中有
+
 ## 总结
 
 通过本次的学习，学会了包的创建，并且了解了测试文件对于包的意义，有了测试文件能够更好的检查包中的函数是否定义正确。学会了利用 godoc 命令生成 API 文档，对 go 语言的掌握也更加的深刻。
