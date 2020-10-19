@@ -12,6 +12,10 @@
 
 ## 设计说明
 
+### 获取包
+
+使用命令 `go get github.com/hupf3/ServiceComputing_hw/hw_readini/readini`
+
 ### 读取配置文件
 
 我们首先需要读取 `.ini` 文件，读取的函数我都放在了 `read.go` 文件中

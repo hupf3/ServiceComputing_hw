@@ -4,6 +4,10 @@
 
 本仓库包括了程序包说明文档 `README.md` ，实现程序包的过程的文档 `specification.md` ，程序包文件夹 `readini` 里面包含了实现读取和监听功能的函数；`main.go` 文件可以更方便进行读取文件，我已经将程序包中的所有函数放到了 `main.go` 中，只需要在文件中的 main 函数进行调用即可。`test.ini` 是用来测试的 ini 配置文件
 
+## 获取包
+
+使用命令 `go get github.com/hupf3/ServiceComputing_hw/hw_readini/readini`
+
 ## 使用说明
 
 程序包中包括两个重要的函数文件 `read.go` 和 `watch.go` 以及二者的测试文件，两个文件的主要功能就是读取配置文件，和监听配置文件的改变，两个文件的主要函数如下所示：
