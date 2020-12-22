@@ -499,17 +499,48 @@ newgrp docker                 #更新docker用户组
 - 阿里云容器镜像服务(免费)实践
 
   - 访问https://cr.console.aliyun.com
+
   - 用淘宝或注册一个账号
+
   - 选择“容器镜像服务”
+
+    <img src="./img/59.png" style="zoom:33%;" />
+
   - 常用仓库操作:如上传 `hello-world` 镜像
-    - 登陆 `docker login --username=<your account> registry.cn-shenzhen.aliyuncs.com`
-    - 标签 `docker tag hello-world registry.cn-shenzhen.aliyuncs.com/pmlpml/repo:hello- world`
-    - 上传 `docker push registry.cn-shenzhen.aliyuncs.com/pmlpml/repo:hello-world`
-    - 下载 `docker push registry.cn-shenzhen.aliyuncs.com/pmlpml/repo:hello-world`
-    - 标签 `docker tag registry.cn-shenzhen.aliyuncs.com/pmlpml/repo:hello-world hello- world`
-    - 删除 `docker rmi registry.cn-shenzhen.aliyuncs.com/pmlpml/repo:hello-world`
-    - 运行 `docker run --rm hello-world`
-    - 退出 `docker logout registry.cn-shenzhen.aliyuncs.com`
+
+    - 登陆 `sudo docker login --username=毕竟你胡总 registry.cn-hangzhou.aliyuncs.com`
+
+      <img src="./img/60.png" style="zoom:33%;" />
+
+    - 标签 `sudo docker tag bf756fb1ae65 registry.cn-hangzhou.aliyuncs.com/hupf/hello-world:latest`
+
+      <img src="./img/61.png" style="zoom:33%;" />
+
+    - 上传 `sudo docker push registry.cn-hangzhou.aliyuncs.com/hupf/hello-world:latest`
+
+      <img src="./img/62.png" style="zoom:33%;" />
+
+    - 下载 `sudo docker pull registry.cn-hangzhou.aliyuncs.com/hupf/hello-world:latest`
+
+      <img src="./img/63.png" style="zoom:33%;" />
+
+    - 标签 `docker tag registry.cn-hangzhou.aliyuncs.com/hupf/hello-world:latest test`
+
+      <img src="./img/64.png" style="zoom:33%;" />通过命令 `docker images` 也可以进行查看
+
+      <img src="./img/65.png" style="zoom:33%;" />
+
+    - 删除 `docker rmi registry.cn-hangzhou.aliyuncs.com/hupf/hello-world:latest`
+
+      <img src="./img/66.png" style="zoom:33%;" />
+
+    - 运行 `docker run --rm test`
+
+      <img src="./img/67.png" style="zoom:33%;" />
+
+    - 退出 `docker logout registry.cn-hangzhou.aliyuncs.com`
+
+      <img src="./img/68.png" style="zoom:33%;" />
 
 ### 容器监控与与日志
 
