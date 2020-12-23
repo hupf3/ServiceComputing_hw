@@ -641,6 +641,26 @@ newgrp docker                 #更新docker用户组
 
   > 调试、分析
 
+### Docker 图形化管理工具
+
+- `web` 图形化管理工具
+
+  - `Portainer`
+
+- 单节点运行
+
+  `docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer`
+
+  <img src="./img/77.png" style="zoom:33%;" />
+
+  得到了结果之后，在浏览器中打开 [http://localhost:9000](http://localhost:9000)
+
+  <img src="./img/78.png" style="zoom:33%;" />
+
+  成功创建用户之后，进入画面，可以进行可视化操作：
+
+  <img src="./img/79.png" style="zoom:33%;" />
+
 ## 遇到问题
 
 ### 安装指定版本 Docker
