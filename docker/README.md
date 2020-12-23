@@ -43,6 +43,15 @@ Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级�
 
 首先检查自己的操作系统中是否装有 `docker`，直接在命令行中输入 `docker` 即可，如果存在以下提示说明没有安装
 
+```bash
+Command 'docker' not found, but can be installed with:
+
+sudo snap install docker          # version 19.03.11, or
+sudo apt  install docker  				# version 1.25.0-1
+
+See 'snap info docker' for additional versions.
+```
+
 ### 准备 Docker 环境
 
 首先需要安装 `docker`；由于课件中写到在 `Linux` 中版本号很重要所以我选择了安装指定版本的 `docker`；如果直接按照系统提示的安装会安装最新版，所以安装指定版本需要执行以下命令：
@@ -352,22 +361,64 @@ newgrp docker                 #更新docker用户组
 
   - 启动服务
 
+    `mkdir comptest && cd comptest`
+    
+    <img src="./img/69.png" style="zoom:33%;" />
+    
+    `vi stack.yml`
+    
+    <img src="./img/70.png" style="zoom:33%;" />
+    
+    修改完之后进行查看
+    
+    `cat stack.yml`
+    
+    <img src="./img/71.png" style="zoom:33%;" />
+    
+    `docker-compose -f stack.yml up`
+    
+    运行上面的命令前需要安装 `docker-compose`；但是在安装的时候遇到了一些问题：
+    
+    <img src="./img/72.png" style="zoom:33%;" />
+    
+    大致的意思就是版本的问题，所以我选择下载对应的版本即可，首先下载二进制文件
+    
     ```bash
-    mkdir comptest && cd comptest
-    vi stack.yml
-    
-    version: '3.1'
-    services:
-    db:
-    image: mysql:5.7
-    command: --default-authentication-plugin=mysql_native_password restart: always
-    environment:
-    MYSQL_ROOT_PASSWORD: example adminer:
-    image: adminer restart: always ports:
-    - 8080:8080
-    
-    docker-compose -f stack.yml up
+    （官方）$ curl -L "https://github.com/docker/compose/releases/download/1.26.1/docker-compose-$(uname -s)-$(uname -m)" > docker-compose
+    （国内）$ curl -L https://get.daocloud.io/docker/compose/releases/download/1.26.1/docker-compose-`uname -s`-`uname -m` > docker-compose
     ```
+    
+    然后将二进制文件移到用户目录下
+    
+    `sudo mv docker-compose /usr/local/bin/`
+    
+    添加可执行权限
+    
+    `sudo chmod +x /usr/local/bin/docker-compose`
+    
+    <img src="./img/73.png" style="zoom:33%;" />
+    
+    验证即可
+    
+    `docker-compose version`
+    
+    <img src="./img/74.png" style="zoom:33%;" />
+    
+    安装好 `docker-compose` 就可以执行命令
+    
+    `docker-compose -f stack.yml up`
+    
+    执行命令时会报错
+    
+    <img src="./img/76.png" style="zoom:33%;" />
+    
+    上网找了一下原因发现是缩紧的问题，该代码格式一定要注意缩紧，为两个空格，如下图所示：
+    
+    <img src="./img/70.png" style="zoom:33%;" />
+    
+    改完之后即可解决此问题
+    
+    <img src="./img/75.png" style="zoom:33%;" />
 
 ### Docker 网络
 
@@ -696,6 +747,51 @@ sudo systemctl restart docker
 <img src="./img/22.png" style="zoom:33%;" />
 
 `docker run -it ubuntu bash`
+
+### 安装 docker-compose 问题
+
+安装 `docker-compose` 的时候遇到了一些问题：
+
+<img src="./img/72.png" style="zoom:33%;" />
+
+大致的意思就是版本的问题，所以我选择下载对应的版本即可，首先下载二进制文件
+
+```bash
+（官方）$ curl -L "https://github.com/docker/compose/releases/download/1.26.1/docker-compose-$(uname -s)-$(uname -m)" > docker-compose
+（国内）$ curl -L https://get.daocloud.io/docker/compose/releases/download/1.26.1/docker-compose-`uname -s`-`uname -m` > docker-compose
+```
+
+然后将二进制文件移到用户目录下
+
+`sudo mv docker-compose /usr/local/bin/`
+
+添加可执行权限
+
+`sudo chmod +x /usr/local/bin/docker-compose`
+
+<img src="./img/73.png" style="zoom:33%;" />
+
+验证即可
+
+`docker-compose version`
+
+<img src="./img/74.png" style="zoom:33%;" />
+
+### docker-compose 命令报错
+
+在执行一下命令时会报错
+
+`docker-compose -f stack.yml up`
+
+<img src="./img/76.png" style="zoom:33%;" />
+
+上网找了一下原因发现是缩紧的问题，该代码格式一定要注意缩紧，为两个空格，如下图所示：
+
+<img src="./img/70.png" style="zoom:33%;" />
+
+改完之后即可解决此问题
+
+<img src="./img/75.png" style="zoom:33%;" />
 
 ## 实践总结
 
