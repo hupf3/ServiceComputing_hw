@@ -1,6 +1,7 @@
 # Docker 实践报告
 
   - [个人信息](#个人信息)
+  - [前言](#前言)
   - [博客分享](#博客分享)
   - [Docker 介绍](#docker-介绍)
   - [Docker 优势](#docker-优势)
@@ -15,6 +16,7 @@
     - [Docker 仓库（Registry）](#docker-仓库registry)
     - [容器监控与与日志](#容器监控与与日志)
     - [Docker 图形化管理工具](#docker-图形化管理工具)
+    - [Golang 应用容器化](#golang-应用容器化)
   - [遇到问题](#遇到问题)
     - [安装指定版本 Docker](#安装指定版本-docker)
     - [docker version报错](#docker-version报错)
@@ -31,6 +33,10 @@
 |   年级   |   2018级    | 专业（方向） |   软件工程专业   |
 |   学号   |  18342025   |     姓名     |      胡鹏飞      |
 |   电话   | 13944589695 |    Email     | 945554668@qq.com |
+
+## 前言
+
+本次作业实现的内容即为目录中的所有标题；几乎是包括了课件中的全部内容，并且将实践的过程和结果截图，以及问题解决都放到了下面。
 
 ## 博客分享
 
@@ -684,6 +690,98 @@ newgrp docker                 #更新docker用户组
   成功创建用户之后，进入画面，可以进行可视化操作：
 
   <img src="./img/79.png" style="zoom:33%;" />
+
+### Golang 应用容器化
+
+- 基于golang官方镜像创建
+
+  - Docker官方指南：https://hub.docker.com/_/golang/
+
+    输入以下命令即可进行镜像创建：
+
+    `docker pull golang`
+
+    <img src="./img/80.png" style="zoom:33%;" />
+
+    然后通过 `docker images` 来进行检查：
+
+    <img src="./img/81.png" style="zoom:33%;" />
+
+    发现已经成功创建了镜像
+
+- 创建目录
+
+  首先需要创建两个 `package` ，然后里面的内容如下所示：
+
+  <img src="./img/82.png" style="zoom:33%;" />
+
+  - `tools.go`：
+
+    ```go
+    package service
+    
+    import (
+      "fmt"
+    )
+    
+    func Log(str string){
+      fmt.Println(str)
+    }
+    ```
+
+  - `helloworld.go`
+
+    ```go
+    package main
+    
+    import "service"
+    
+    func main() {
+      service.Log("abc")
+    }
+    ```
+
+    以上就是本次实践的代码，功能比较简单就是输出一个字符串，然后借助 `Docker` 来编译构建运行上述代码
+
+- 创建 `Dockerfile` 
+
+  需要在根目录下创建一个 `Dockerfile` ：
+
+  ```bash
+  rm -f ./Dockerfile \
+  && tee ./Dockerfile <<-'EOF'
+  FROM golang:1.11.5
+  WORKDIR /go/src
+  COPY . .
+  RUN go get -d -v ./...
+  RUN go install -v ./...
+  EOF
+  ```
+
+  <img src="./img/83.png" style="zoom:33%;" />
+
+  然后查看一下 `Dockerfile` 文件 `vim Dockerfile`
+
+  <img src="./img/84.png" style="zoom:33%;" />
+
+- 创建一次性容器且运行
+
+  执行以下命令，先构建镜像再创建一次性容器，该容器启动后立即运行镜像中构件好的可执行文件：
+
+  `docker build -t my-golang-app . \
+  && docker run -it --rm --name my-running-app my-golang-app hello`
+
+  验证是否创建好了容器镜像：
+
+  `docker images`
+
+  <img src="./img/86.png" style="zoom:33%;" />
+
+  得到结果如下：
+
+  <img src="./img/85.png" style="zoom:33%;" />
+
+  可以看到最后得到了想要的输出结果，即证明构建成功
 
 ## 遇到问题
 
